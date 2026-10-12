@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Panel de usuarios</title>
+<style>
+:root{--bg:#f3f6fb;--card:#fff;--ink:#172033;--muted:#697386;--line:#e4e9f2;--primary:#365cf5;--primary2:#2446cf;--good:#14804a;--warn:#a85b00;--bad:#b42318;--shadow:0 12px 34px rgba(24,39,75,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}.muted{color:var(--muted)}.small{font-size:12px}.wrap{max-width:1440px;margin:auto;padding:22px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:12px}.logo{width:42px;height:42px;border-radius:13px;background:var(--primary);color:#fff;display:grid;place-items:center;font-weight:800;font-size:19px}.brand h1{font-size:20px;margin:0}.brand p{margin:2px 0 0;color:var(--muted);font-size:13px}.btn{border:0;border-radius:10px;padding:10px 14px;font-weight:650;display:inline-flex;align-items:center;justify-content:center;gap:7px}.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:var(--primary2)}.btn-light{background:#eef2ff;color:#293f9c}.btn-outline{background:#fff;border:1px solid var(--line);color:var(--ink)}.btn-danger{background:#fff0ef;color:var(--bad)}.btn-sm{padding:7px 10px;font-size:13px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}.login-shell{min-height:100vh;display:grid;place-items:center;padding:20px}.login{width:min(430px,100%);padding:30px}.login h2{margin:0 0 6px;font-size:24px}.login .brand{margin-bottom:26px}.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}.field label{font-size:13px;font-weight:700;color:#3c465a}.field input,.field select,.field textarea,.search{width:100%;border:1px solid #d7deea;border-radius:10px;padding:10px 12px;background:#fff;color:var(--ink);outline:none}.field input:focus,.field select:focus,.field textarea:focus,.search:focus{border-color:var(--primary);box-shadow:0 0 0 3px #365cf51c}.field textarea{min-height:90px;resize:vertical}.notice{padding:11px 13px;border-radius:10px;background:#fff7e6;color:#7a4b00;font-size:13px;margin:14px 0}.error{color:var(--bad);font-size:13px;margin-top:10px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:18px}.stat{padding:18px}.stat .label{color:var(--muted);font-size:13px}.stat .value{font-size:28px;font-weight:800;margin-top:5px}.stat .hint{font-size:12px;color:var(--muted);margin-top:4px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:18px}.panel{padding:18px}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.panel-head h2{font-size:17px;margin:0}.tools{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.search{width:min(280px,100%)}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:830px}th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:middle}th{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:750}td{font-size:13px}.name{font-weight:750}.sub{font-size:12px;color:var(--muted);margin-top:3px}.pill{display:inline-flex;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:750;background:#edf1f7;color:#526075}.pill.active{background:#e7f7ed;color:var(--good)}.pill.expiring{background:#fff2d9;color:var(--warn)}.pill.expired{background:#ffebea;color:var(--bad)}.actions{display:flex;gap:6px;flex-wrap:wrap}.side-stack{display:flex;flex-direction:column;gap:16px}.alert-item{padding:11px 0;border-bottom:1px solid var(--line)}.alert-item:last-child{border-bottom:0}.alert-item strong{display:block;font-size:13px}.alert-item span{display:block;color:var(--muted);font-size:12px;margin-top:3px}.quick{display:grid;gap:8px}.quick button{justify-content:flex-start}.empty{padding:32px;text-align:center;color:var(--muted)}.modal-backdrop{position:fixed;inset:0;background:#10182880;display:grid;place-items:center;padding:16px;z-index:20;overflow:auto}.modal{width:min(820px,100%);max-height:94vh;overflow:auto;background:#fff;border-radius:16px;padding:22px;box-shadow:0 24px 80px #0003}.modal-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.modal-head h2{margin:0;font-size:20px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}.span2{grid-column:1/-1}.modal-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:18px}.toast{position:fixed;right:18px;bottom:18px;z-index:50;background:#182033;color:#fff;padding:12px 16px;border-radius:12px;box-shadow:var(--shadow);max-width:min(420px,calc(100vw - 36px))}.section-label{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:800;margin:5px 0 12px}.configbar{margin-bottom:18px;padding:13px 15px;display:flex;justify-content:space-between;align-items:center;gap:12px}.configbar strong{font-size:13px}.configbar p{margin:2px 0 0;font-size:12px;color:var(--muted)}.tag{font-size:11px;padding:4px 8px;border-radius:999px;background:#fff2d9;color:#805000;font-weight:800}
+@media(max-width:1050px){.layout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.wrap{padding:13px}.topbar{align-items:flex-start}.topbar .tools{justify-content:flex-end}.stats{gap:9px}.stat{padding:13px}.stat .value{font-size:23px}.panel{padding:13px}.panel-head{align-items:flex-start;flex-direction:column}.search{width:100%}.form-grid{grid-template-columns:1fr}.span2{grid-column:auto}.login{padding:23px}.configbar{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div id="loginScreen" class="login-shell">
+  <form id="loginForm" class="card login">
+    <div class="brand"><div class="logo">U</div><div><h1>Panel de usuarios</h1><p>Acceso privado de administración</p></div></div>
+    <h2>Iniciar sesión</h2><p class="muted" style="margin-top:5px;margin-bottom:22px">Ingresa tus credenciales de administrador.</p>
+    <div class="field"><label for="loginUser">Usuario o email</label><input id="loginUser" autocomplete="username" required></div>
+    <div class="field"><label for="loginPass">Contraseña</label><input id="loginPass" type="password" autocomplete="current-password" required></div>
+    <button class="btn btn-primary" style="width:100%" type="submit" id="loginBtn">Entrar</button>
+    <div id="loginError" class="error"></div>
+    <div class="notice">La autenticación debe validarse en Apps Script/servidor. Este formulario no protege datos por sí solo si el backend no comprueba la sesión.</div>
+  </form>
+</div>
+
+<div id="appScreen" class="hidden">
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand"><div class="logo">U</div><div><h1>Panel de usuarios</h1><p>Usuarios, renovaciones y recursos de la app</p></div></div>
+      <div class="tools"><span class="muted small" id="sessionLabel">Sesión activa</span><button class="btn btn-outline" id="refreshBtn">↻ Actualizar</button><button class="btn btn-light" id="logoutBtn">Salir</button></div>
+    </header>
+
+    <div id="configNotice" class="card configbar"><div><strong>Conexión pendiente</strong><p>Configura la URL del Web App de Apps Script en el código HTML.</p></div><span class="tag">Configurar API</span></div>
+
+    <section class="stats">
+      <div class="card stat"><div class="label">Usuarios totales</div><div class="value" id="statTotal">—</div><div class="hint">Registros cargados</div></div>
+      <div class="card stat"><div class="label">Activos</div><div class="value" id="statActive">—</div><div class="hint">Con fecha vigente</div></div>
+      <div class="card stat"><div class="label">Por vencer (7 días)</div><div class="value" id="statSoon">—</div><div class="hint">Requieren seguimiento</div></div>
+      <div class="card stat"><div class="label">Vencidos</div><div class="value" id="statExpired">—</div><div class="hint">Revisar renovación</div></div>
+    </section>
+
+    <div class="layout">
+      <section class="card panel">
+        <div class="panel-head"><div><h2>Gestión de usuarios</h2><div class="muted small">Busca, edita y prepara mensajes de renovación.</div></div><div class="tools"><input class="search" id="searchBox" placeholder="Buscar nombre, email o teléfono…"><button class="btn btn-primary" id="addBtn">＋ Nuevo usuario</button></div></div>
+        <div class="tools" style="margin-bottom:14px"><select id="statusFilter" class="search" style="width:180px"><option value="all">Todos los estados</option><option value="active">Activos</option><option value="soon">Por vencer</option><option value="expired">Vencidos</option></select><button class="btn btn-outline btn-sm" id="exportBtn">Exportar CSV</button></div>
+        <div class="table-wrap"><table><thead><tr><th>Usuario</th><th>Vencimiento</th><th>Estado</th><th>App / Downloader</th><th>Acciones</th></tr></thead><tbody id="userRows"></tbody></table></div>
+        <div id="tableEmpty" class="empty hidden">No hay usuarios para mostrar.</div>
+      </section>
+      <aside class="side-stack">
+        <section class="card panel"><div class="panel-head"><h2>Alertas y seguimiento</h2><span class="pill expiring" id="alertCount">0</span></div><div id="alertsList"></div></section>
+        <section class="card panel"><div class="panel-head"><h2>Acciones rápidas</h2></div><div class="quick"><button class="btn btn-light" id="renewalsBtn">✉ Preparar renovaciones</button><button class="btn btn-outline" id="appDataBtn">⚙ Datos de app y downloader</button><button class="btn btn-outline" id="settingsBtn">☰ Plantillas WhatsApp</button></div><p class="muted small" style="margin-bottom:0;margin-top:12px">Los mensajes se abren para revisar y enviar manualmente; no se envían automáticamente.</p></section>
+      </aside>
+    </div>
+    <p class="muted small" style="margin:18px 2px 0">Consejo de seguridad: limita el acceso a la hoja y evita guardar contraseñas reales en texto plano. Usa contraseñas temporales o un gestor seguro cuando sea posible.</p>
+  </div>
+</div>
+
+<div id="userModal" class="modal-backdrop hidden">
+ <form id="userForm" class="modal">
+  <div class="modal-head"><h2 id="modalTitle">Nuevo usuario</h2><button class="btn btn-outline btn-sm" type="button" data-close="userModal">✕ Cerrar</button></div>
+  <input type="hidden" id="recordId">
+  <div class="section-label">Datos de usuario</div>
+  <div class="form-grid">
+   <div class="field"><label for="uName">Nombre / alias *</label><input id="uName" required></div>
+   <div class="field"><label for="uEmail">Email</label><input id="uEmail" type="email"></div>
+   <div class="field"><label for="uPhone">Teléfono WhatsApp (con país)</label><input id="uPhone" placeholder="54911…"></div>
+   <div class="field"><label for="uPassword">Usuario / contraseña o nota segura</label><input id="uPassword" autocomplete="off" placeholder="Evita guardar contraseñas sensibles"></div>
+   <div class="field"><label for="uStart">Fecha de alta</label><input id="uStart" type="date"></div>
+   <div class="field"><label for="uExpiry">Fecha de vencimiento *</label><input id="uExpiry" type="date" required></div>
+   <div class="field"><label for="uStatus">Estado</label><select id="uStatus"><option value="Activo">Activo</option><option value="Demo">Demo</option><option value="Pausado">Pausado</option><option value="Baja">Baja</option></select></div>
+   <div class="field"><label for="uDevices">Dispositivos permitidos</label><select id="uDevices"><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+  </div>
+  <div class="section-label">Datos de app y downloader</div>
+  <div class="form-grid">
+   <div class="field"><label for="uAppName">Nombre de la app</label><input id="uAppName" placeholder="Nombre visible"></div>
+   <div class="field"><label for="uAppLink">Link de app</label><input id="uAppLink" type="url" placeholder="https://…"></div>
+   <div class="field"><label for="uDownloader">Código / nombre downloader</label><input id="uDownloader"></div>
+   <div class="field"><label for="uDownloaderLink">Link downloader</label><input id="uDownloaderLink" type="url" placeholder="https://…"></div>
+   <div class="field span2"><label for="uNotes">Notas internas</label><textarea id="uNotes" placeholder="Plan, pago, observaciones, soporte…"></textarea></div>
+  </div>
+  <div class="modal-actions"><button type="button" class="btn btn-outline" data-close="userModal">Cancelar</button><button class="btn btn-primary" type="submit" id="saveBtn">Guardar usuario</button></div>
+ </form>
+</div>
+
+<div id="messageModal" class="modal-backdrop hidden">
+ <div class="modal" style="max-width:680px"><div class="modal-head"><h2 id="messageTitle">Mensaje de WhatsApp</h2><button class="btn btn-outline btn-sm" type="button" data-close="messageModal">✕ Cerrar</button></div>
+  <div class="field"><label for="messageText">Mensaje listo para revisar</label><textarea id="messageText" style="min-height:220px"></textarea></div>
+  <div class="modal-actions"><button class="btn btn-outline" id="copyMessageBtn" type="button">Copiar mensaje</button><button class="btn btn-primary" id="openWhatsAppBtn" type="button">Abrir WhatsApp</button></div>
+ </div>
+</div>
+
+<div id="templatesModal" class="modal-backdrop hidden">
+ <form id="templatesForm" class="modal" style="max-width:680px"><div class="modal-head"><h2>Plantillas de mensajes</h2><button class="btn btn-outline btn-sm" type="button" data-close="templatesModal">✕ Cerrar</button></div>
+ <p class="muted small">Variables: {{nombre}}, {{vencimiento}}, {{app}}, {{link_app}}, {{downloader}}, {{link_downloader}}.</p>
+ <div class="field"><label for="tplRenewal">Renovación</label><textarea id="tplRenewal"></textarea></div><div class="field"><label for="tplExpired">Cuenta vencida</label><textarea id="tplExpired"></textarea></div><div class="field"><label for="tplWelcome">Bienvenida / datos de acceso</label><textarea id="tplWelcome"></textarea></div>
+ <div class="modal-actions"><button type="button" class="btn btn-outline" data-close="templatesModal">Cancelar</button><button class="btn btn-primary" type="submit">Guardar plantillas</button></div></form>
+</div>
+
+<div id="toast" class="toast hidden" role="status"></div>
+
+<script>
+/*
+ * CONFIGURACIÓN:
+ * 1) Pega la URL de tu Web App de Apps Script en API_URL.
+ * 2) El backend debe implementar las acciones documentadas al final de este archivo.
+ * 3) No uses una clave compartida escrita aquí como sustituto de autenticación real.
+ */
+const API_URL = "https://script.google.com/macros/s/AKfycbywIXkTfL4wcYQOn0Eun2Z0Y2BgMwy4xfg8RVu4_96D8ykw3qVvzdqhD7_y0R-2d8Cf6g/exec";
+const SESSION_KEY = "user_panel_session_v1";
+const DEFAULT_TEMPLATES = {
+  renewal: "Hola {{nombre}} 👋 Te avisamos que tu servicio vence el {{vencimiento}}. Si deseas renovar, responde a este mensaje y te ayudamos. ¡Gracias!",
+  expired: "Hola {{nombre}}. Tu servicio venció el {{vencimiento}}. Si quieres renovarlo, escríbenos y coordinamos la reactivación. ¡Gracias!",
+  welcome: "¡Hola {{nombre}}! 👋 Aquí tienes los datos de tu servicio:\nApp: {{app}}\nLink de app: {{link_app}}\nDownloader: {{downloader}}\nLink downloader: {{link_downloader}}\nAnte cualquier duda, escríbenos."
+};
+let users = [];
+let templates = {...DEFAULT_TEMPLATES};
+let currentMessageUser = null;
+let toastTimer = null;
+
+const $ = id => document.getElementById(id);
+const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const dateFmt = value => { if(!value) return "—"; const d = new Date(value+"T12:00:00"); return isNaN(d) ? value : d.toLocaleDateString("es-AR"); };
+const todayISO = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`; };
+const daysUntil = date => { if(!date) return 99999; const a = new Date(todayISO()+"T00:00:00"); const b = new Date(date+"T00:00:00"); return Math.ceil((b-a)/86400000); };
+function statusOf(u){ const d=daysUntil(u.expiryDate); if(["Baja","Pausado"].includes(u.status)) return "paused"; if(d<0) return "expired"; if(d<=7) return "soon"; return "active"; }
+function statusLabel(u){ const s=statusOf(u); return s==="active"?(u.status||"Activo"):s==="soon"?"Por vencer":s==="expired"?"Vencido":(u.status||"Pausado"); }
+function showToast(msg){ $("toast").textContent=msg; $("toast").classList.remove("hidden"); clearTimeout(toastTimer); toastTimer=setTimeout(()=>$("toast").classList.add("hidden"),3500); }
+function openModal(id){ $(id).classList.remove("hidden"); }
+function closeModal(id){ $(id).classList.add("hidden"); }
+function getSession(){ try{return JSON.parse(sessionStorage.getItem(SESSION_KEY)||"null");}catch{return null;} }
+function setSession(s){sessionStorage.setItem(SESSION_KEY,JSON.stringify(s));}
+function clearSession(){sessionStorage.removeItem(SESSION_KEY);}
+function apiConfigured(){return /^https:\/\/script\.google\.com\/macros\/s\//.test(API_URL);}
+async function api(action, payload={}){
+  const session=getSession();
+  if(!apiConfigured()) throw new Error("Configura API_URL con la URL /exec de tu Web App de Apps Script.");
+  // El backend debe validar el token y los permisos en CADA acción protegida.
+  // Apps Script no ofrece CORS configurable como un servidor convencional.
+  // Si el navegador bloquea esta llamada por CORS/redirecciones, aloja este HTML
+  // con HtmlService en el mismo proyecto Apps Script o usa un proxy HTTPS propio.
+  const response=await fetch(API_URL,{
+    method:"POST",
+    headers:{"Content-Type":"text/plain;charset=utf-8"},
+    body:JSON.stringify({action,token:session?.token||"",...payload}),
+    redirect:"follow"
+  });
+  if(!response.ok) throw new Error("Error HTTP "+response.status);
+  const data=await response.json();
+  if(!data || data.ok===false) throw new Error(data?.error||"La API rechazó la solicitud.");
+  return data;
+}
+async function loadUsers(){
+  const result=await api("listUsers");
+  users=Array.isArray(result.users)?result.users:[];
+  if(result.templates) templates={...DEFAULT_TEMPLATES,...result.templates};
+  render();
+}
+function localDemoMode(){return !apiConfigured();}
+function render(){
+  const query=$("searchBox").value.trim().toLowerCase(), filter=$("statusFilter").value;
+  const filtered=users.filter(u=>{
+    const hay=[u.name,u.email,u.phone,u.notes,u.appName,u.downloader].join(" ").toLowerCase();
+    const s=statusOf(u);
+    return hay.includes(query)&&(filter==="all"||(filter==="active"&&s==="active")||(filter==="soon"&&s==="soon")||(filter==="expired"&&s==="expired"));
+  });
+  $("userRows").innerHTML=filtered.map(u=>{
+    const s=statusOf(u), pill=s==="active"?"active":s==="soon"?"expiring":s==="expired"?"expired":"";
+    return `<tr><td><div class="name">${esc(u.name||"Sin nombre")}</div><div class="sub">${esc(u.email||"Sin email")}${u.phone?" · "+esc(u.phone):""}</div></td><td>${esc(dateFmt(u.expiryDate))}<div class="sub">${daysUntil(u.expiryDate)>=0?`en ${daysUntil(u.expiryDate)} día(s)`:`hace ${Math.abs(daysUntil(u.expiryDate))} día(s)`}</div></td><td><span class="pill ${pill}">${esc(statusLabel(u))}</span></td><td><div>${esc(u.appName||"—")}</div><div class="sub">${u.downloader?"Downloader: "+esc(u.downloader):"Sin downloader"}</div></td><td><div class="actions"><button class="btn btn-outline btn-sm" data-action="edit" data-id="${esc(u.id)}">Editar</button><button class="btn btn-light btn-sm" data-action="renew" data-id="${esc(u.id)}">WhatsApp</button></div></td></tr>`;
+  }).join("");
+  $("tableEmpty").classList.toggle("hidden",filtered.length!==0);
+  const counts={total:users.length,active:0,soon:0,expired:0};
+  users.forEach(u=>{const s=statusOf(u);if(s==="active")counts.active++;if(s==="soon")counts.soon++;if(s==="expired")counts.expired++;});
+  $("statTotal").textContent=counts.total;$("statActive").textContent=counts.active;$("statSoon").textContent=counts.soon;$("statExpired").textContent=counts.expired;
+  const alerts=users.filter(u=>["soon","expired"].includes(statusOf(u))).sort((a,b)=>daysUntil(a.expiryDate)-daysUntil(b.expiryDate)).slice(0,8);
+  $("alertCount").textContent=alerts.length;
+  $("alertsList").innerHTML=alerts.length?alerts.map(u=>`<div class="alert-item"><strong>${esc(u.name||"Sin nombre")} · ${statusOf(u)==="expired"?"Vencido":"Por vencer"}</strong><span>${esc(dateFmt(u.expiryDate))} · ${daysUntil(u.expiryDate)<0?"hace "+Math.abs(daysUntil(u.expiryDate))+" día(s)":"en "+daysUntil(u.expiryDate)+" día(s)"}</span><button class="btn btn-light btn-sm" style="margin-top:8px" data-action="renew" data-id="${esc(u.id)}">Preparar mensaje</button></div>`).join(""):'<div class="empty">No hay alertas por ahora.</div>';
+  $("configNotice").classList.toggle("hidden",apiConfigured());
+}
+function fillForm(u={}){
+  $("recordId").value=u.id||"";
+  $("modalTitle").textContent=u.id?"Editar usuario":"Nuevo usuario";
+  const map={uName:"name",uEmail:"email",uPhone:"phone",uPassword:"credentialNote",uStart:"startDate",uExpiry:"expiryDate",uStatus:"status",uDevices:"devices",uAppName:"appName",uAppLink:"appLink",uDownloader:"downloader",uDownloaderLink:"downloaderLink",uNotes:"notes"};
+  Object.entries(map).forEach(([id,key])=>$(id).value=u[key]??(id==="uStatus"?"Activo":id==="uDevices"?"4":""));
+}
+function readForm(){
+  const v=id=>$(id).value.trim();
+  return {id:v("recordId")||undefined,name:v("uName"),email:v("uEmail"),phone:v("uPhone"),credentialNote:v("uPassword"),startDate:v("uStart"),expiryDate:v("uExpiry"),status:v("uStatus"),devices:Number(v("uDevices")),appName:v("uAppName"),appLink:v("uAppLink"),downloader:v("uDownloader"),downloaderLink:v("uDownloaderLink"),notes:v("uNotes")};
+}
+async function saveUser(user){
+  if(!apiConfigured()) throw new Error("Falta configurar la URL de Apps Script.");
+  await api("saveUser",{user});
+  await loadUsers();
+}
+function findUser(id){return users.find(u=>String(u.id)===String(id));}
+function messageFor(user,type="renewal"){
+  const template=type==="expired"?templates.expired:type==="welcome"?templates.welcome:templates.renewal;
+  const vars={nombre:user.name||"",vencimiento:dateFmt(user.expiryDate),app:user.appName||"",link_app:user.appLink||"",downloader:user.downloader||"",link_downloader:user.downloaderLink||""};
+  return template.replace(/\{\{(nombre|vencimiento|app|link_app|downloader|link_downloader)\}\}/g,(_,k)=>vars[k]);
+}
+function prepareMessage(user,type){
+  currentMessageUser=user;
+  $("messageTitle").textContent=(type==="expired"?"Aviso de vencimiento":type==="welcome"?"Bienvenida":"Renovación")+" · "+(user.name||"usuario");
+  $("messageText").value=messageFor(user,type);
+  openModal("messageModal");
+}
+function openWhatsApp(){
+  const phone=(currentMessageUser?.phone||"").replace(/\D/g,"");
+  if(!phone){showToast("Añade el teléfono con código de país al usuario.");return;}
+  const url="https://wa.me/"+phone+"?text="+encodeURIComponent($("messageText").value);
+  window.open(url,"_blank","noopener,noreferrer");
+}
+function csvExport(){
+  const cols=["id","name","email","phone","startDate","expiryDate","status","devices","appName","appLink","downloader","downloaderLink","notes"];
+  const quote=v=>'"'+String(v??"").replace(/"/g,'""')+'"';
+  const csv=[cols.join(","),...users.map(u=>cols.map(c=>quote(u[c])).join(","))].join("\r\n");
+  const blob=new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8;"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="usuarios.csv";a.click();URL.revokeObjectURL(a.href);
+}
+$("loginForm").addEventListener("submit",async e=>{
+  e.preventDefault();$("loginError").textContent="";$("loginBtn").disabled=true;$("loginBtn").textContent="Comprobando…";
+  try{
+    const result=await api("login",{username:$("loginUser").value.trim(),password:$("loginPass").value});
+    if(!result.token) throw new Error("El backend no devolvió un token de sesión.");
+    setSession({token:result.token,user:result.user||$("loginUser").value.trim()});
+    $("loginPass").value="";$("loginScreen").classList.add("hidden");$("appScreen").classList.remove("hidden");$("sessionLabel").textContent="Sesión: "+getSession().user;
+    await loadUsers();
+  }catch(err){$("loginError").textContent=err.message||"No se pudo iniciar sesión.";}
+  finally{$("loginBtn").disabled=false;$("loginBtn").textContent="Entrar";}
+});
+$("logoutBtn").addEventListener("click",async()=>{try{await api("logout");}catch{}clearSession();users=[];$("appScreen").classList.add("hidden");$("loginScreen").classList.remove("hidden");});
+$("refreshBtn").addEventListener("click",async()=>{try{await loadUsers();showToast("Datos actualizados.");}catch(e){showToast(e.message);}});
+$("searchBox").addEventListener("input",render);$("statusFilter").addEventListener("change",render);
+$("addBtn").addEventListener("click",()=>{fillForm();openModal("userModal");});
+$("userForm").addEventListener("submit",async e=>{e.preventDefault();const btn=$("saveBtn");btn.disabled=true;try{const u=readForm();if(!u.name||!u.expiryDate)throw new Error("Completa nombre y vencimiento.");await saveUser(u);closeModal("userModal");showToast("Usuario guardado.");}catch(err){showToast(err.message);}finally{btn.disabled=false;}});
+document.body.addEventListener("click",async e=>{
+  const close=e.target.closest("[data-close]");if(close){closeModal(close.dataset.close);return;}
+  const action=e.target.closest("[data-action]");if(action){const u=findUser(action.dataset.id);if(!u)return;if(action.dataset.action==="edit"){fillForm(u);openModal("userModal");}if(action.dataset.action==="renew")prepareMessage(u,statusOf(u)==="expired"?"expired":"renewal");}
+});
+$("openWhatsAppBtn").addEventListener("click",openWhatsApp);
+$("copyMessageBtn").addEventListener("click",async()=>{try{await navigator.clipboard.writeText($("messageText").value);showToast("Mensaje copiado.");}catch{ $("messageText").select();document.execCommand("copy");showToast("Mensaje copiado.");}});
+$("exportBtn").addEventListener("click",csvExport);
+$("renewalsBtn").addEventListener("click",()=>{const u=users.find(x=>["soon","expired"].includes(statusOf(x)));if(!u){showToast("No hay usuarios por vencer o vencidos.");return;}prepareMessage(u,statusOf(u)==="expired"?"expired":"renewal");});
+$("appDataBtn").addEventListener("click",()=>{fillForm();openModal("userModal");showToast("Los datos de app se guardan dentro de cada usuario.");});
+$("settingsBtn").addEventListener("click",()=>{$("tplRenewal").value=templates.renewal;$("tplExpired").value=templates.expired;$("tplWelcome").value=templates.welcome;openModal("templatesModal");});
+$("templatesForm").addEventListener("submit",async e=>{e.preventDefault();templates={renewal:$("tplRenewal").value,expired:$("tplExpired").value,welcome:$("tplWelcome").value};try{await api("saveTemplates",{templates});showToast("Plantillas guardadas.");closeModal("templatesModal");}catch(err){showToast("No se pudieron guardar en el servidor: "+err.message);}});
+document.querySelectorAll(".modal-backdrop").forEach(backdrop=>backdrop.addEventListener("click",e=>{if(e.target===backdrop)backdrop.classList.add("hidden");}));
+(async function boot(){
+  const session=getSession();
+  if(session?.token&&apiConfigured()){
+    try{$("loginScreen").classList.add("hidden");$("appScreen").classList.remove("hidden");$("sessionLabel").textContent="Sesión: "+(session.user||"activa");await loadUsers();}
+    catch(e){clearSession();$("appScreen").classList.add("hidden");$("loginScreen").classList.remove("hidden");$("loginError").textContent="La sesión expiró o la API no está disponible: "+e.message;}
+  }
+})();
+</script>
+</body>
+</html>
